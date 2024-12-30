@@ -1,0 +1,10 @@
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C001', 'Rorke', 'Caldairou', '015-2098836', 'rcaldairou0@oracle.com');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C002', 'Kimbra', 'Poynter', '019-2735246', 'kpoynter1@youtu.be');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C003', 'Lezlie', 'Diche', '013-9336800', 'ldiche2@phoca.cz');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C004', 'Clair', 'Tampen', '013-7454732', 'ctampen3@artisteer.com');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C005', 'Kerwinn', 'Oakey', '014-4482092', 'koakey4@wired.com');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C006', 'Bank', 'Spitaro', '011-9890586', 'bspitaro5@ehow.com');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C007', 'Karlee', 'Ranklin', '010-5905858', 'kranklin6@nyu.edu');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C008', 'Ruprecht', 'Ruddell', '019-1324522', 'rruddell7@51.la');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C009', 'Faina', 'Danilevich', '011-7941579', 'fdanilevich8@woothemes.com');
+insert into customer (customer_id, first_name, last_name, tel_no, email) values ('C010', 'Abigail', 'McWhorter', '016-5695591', 'amcwhorter9@zimbio.com');

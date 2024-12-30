@@ -1,0 +1,77 @@
+----------------------------------FORMAT DISPLAY------------------------------------------
+cl scr
+set linesize 120
+set pagesize 30
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY';
+
+-----------------------------------------USER INPUT---------------------------------------
+PROMPT '*******************************************'
+PROMPT '*                                         *'
+PROMPT '*    SEARCH  MONTHLY SALES BY THE YEAR    *'
+PROMPT '*                                         *'
+PROMPT '*******************************************'
+PROMPT
+PROMPT
+
+ACCEPT v_searchDate CHAR FORMAT A4 PROMPT 'Enter year(2020-2023): '
+ACCEPT v_month NUMBER FORMAT 99 PROMPT 'Enter Month(1-12): '
+
+--------------------------------FORMAT COLUMN---------------------------------------------
+COLUMN month FORMAT A24
+COLUMN payment_date FORMAT A25
+COLUMN payment_amount FORMAT $9999.99
+COLUMN sst FORMAT $999.99
+COLUMN service_charge FORMAT $9999.99
+COLUMN Payment_Discount FORMAT $99999.99
+COLUMN Final_Payment FORMAT $999999.99
+
+---------------------------------------SET TITLE------------------------------------------
+TTITLE CENTER 'MONTHLY SALES REPORT FOR YEAR ' v_searchDate SKIP 1-
+RIGHT 'Page:' FORMAT 999 SQL.PNO SKIP 2
+
+--------------------COMPUTE TOTAL AMOUNT & DISCOUNT OF MONTH------------------------------
+BREAK on month skip 2
+COMPUTE SUM LABEL 'TOTAL' OF Final_Payment ON month
+COMPUTE SUM OF Payment_Discount ON month
+
+----------------------------MONTHLY SALES QUERY-------------------------------------------
+SELECT 
+	CASE EXTRACT(MONTH FROM payment_date)
+    	 WHEN 1 THEN 'January'
+	 WHEN 2 THEN 'February'
+    	 WHEN 3 THEN 'March'
+    	 WHEN 4 THEN 'April'
+    	 WHEN 5 THEN 'May'
+    	 WHEN 6 THEN 'June'
+    	 WHEN 7 THEN 'July'
+    	 WHEN 8 THEN 'August'
+    	 WHEN 9 THEN 'September'
+    	 WHEN 10 THEN 'October'
+    	 WHEN 11 THEN 'November'
+    	 WHEN 12 THEN 'December'
+  	END AS month,
+	payment_date,payment_amount,sst,service_charge,
+	(payment_amount + sst + service_charge) * O.discount AS Payment_Discount,
+	((payment_amount + sst + service_charge) - (payment_amount + sst + service_charge) * O.discount) AS Final_Payment
+FROM payment P, offers O, Booking B
+WHERE
+	P.offer_code = O.offer_code AND
+	P.booking_id = B.booking_id AND
+	TO_CHAR(payment_date,'YYYY') = &v_searchDate AND
+	EXTRACT(MONTH FROM payment_date) = &v_month
+GROUP BY
+	   EXTRACT(MONTH FROM payment_date),payment_date,payment_amount,sst,service_charge,
+	   (payment_amount + sst + service_charge) * O.discount,
+	   ((payment_amount + sst + service_charge) - (payment_amount + sst + service_charge) * O.discount)
+ORDER BY payment_date;
+
+------------------------------------CLEAR FORMAT-----------------------------------------
+CLEAR COLUMNS
+CLEAR BREAKS
+CLEAR COMPUTES
+TTITLE OFF
+
+---------------------------------------------END-----------------------------------------
+
+
+

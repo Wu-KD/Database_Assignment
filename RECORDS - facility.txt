@@ -1,0 +1,10 @@
+insert into facility (facility_id, description, max_capacity, location) values ('F001', 'Specialty Restaurants', 50, 'D001');
+insert into facility (facility_id, description, max_capacity, location) values ('F002', 'Spa Treatments', 50, 'D002');
+insert into facility (facility_id, description, max_capacity, location) values ('F003', 'Shore Excursions', 50, 'D003');
+insert into facility (facility_id, description, max_capacity, location) values ('F004', 'Shows and Performances', 50, 'D004');
+insert into facility (facility_id, description, max_capacity, location) values ('F005', 'Wine Tasting', 50, 'D005');
+insert into facility (facility_id, description, max_capacity, location) values ('F006', 'Fitness Classes', 50, 'D006');
+insert into facility (facility_id, description, max_capacity, location) values ('F007', 'Escape Rooms', 50, 'D007');
+insert into facility (facility_id, description, max_capacity, location) values ('F008', 'Chef''s Table', 50, 'D008');
+insert into facility (facility_id, description, max_capacity, location) values ('F009', 'High Tea', 50, 'D009');
+insert into facility (facility_id, description, max_capacity, location) values ('F010', 'art workshops', 50, 'D010');

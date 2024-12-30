@@ -1,0 +1,10 @@
+CREATE TABLE reservation
+(reserve_id   VARCHAR(4) NOT NULL,
+ date_reserve DATE NOT NULL,
+ guest_no     NUMBER(2) NOT NULL,
+ duration     DECIMAL(3,1) NOT NULL,
+ facility_id  VARCHAR(4) NOT NULL,
+ PRIMARY KEY (reserve_id),
+ FOREIGN KEY (facility_id) REFERENCES facility (facility_id)
+);
+ 

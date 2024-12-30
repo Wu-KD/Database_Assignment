@@ -1,0 +1,52 @@
+----------------------------------FORMAT DISPLAY-----------------------------------------
+cl scr
+set linesize 120
+set pagesize 30
+
+-----------------------------------------USER INPUT--------------------------------------
+PROMPT '#############################################'
+PROMPT '#                                           #'
+PROMPT '#   SEARCH CANCELATION BY THE FACILITY ID   #'
+PROMPT '#                                           #'
+PROMPT '#############################################'
+PROMPT
+PROMPT
+
+ACCEPT v_searchFac CHAR FORMAT A4-
+PROMPT 'Enter Facility ID(F001-F010): '
+	
+--------------------------------FORMAT COLUMN--------------------------------------------
+COLUMN facility_id FORMAT A20
+COLUMN reason FORMAT A38
+COLUMN cancelation_id FORMAT A15
+COLUMN reserve_id FORMAT A10
+COLUMN Facility FORMAT A30
+COLUMN penalties FORMAT $9999
+
+---------------------------------------SET TITLE-----------------------------------------
+TTITLE CENTER 'CANCELATION REPORT BASED ON FACILITY &v_searchFac' SKIP 1-
+RIGHT 'Page:' FORMAT 999 SQL.PNO SKIP 2
+
+--------------------COMPUTE TOTAL PENALTY AMOUNT OF REASONS------------------------------
+BREAK ON facility_id ON facility skip 2
+COMPUTE SUM LABEL 'TOTAL AMOUNT'-
+	  COUNT LABEL 'NUMBER OF CANCELATION'-
+	  OF penalties ON facility
+
+--------------------CANCELATION OF SCHEDULE ROUTE QUERY-------------------------------
+SELECT F.facility_id,F.description AS Facility,C.cancelation_id,C.reason,penalties
+FROM cancelation C, booking B,Reservation R, facility F
+WHERE 
+	C.reserve_id = R.reserve_id AND
+	R.reserve_id = B.reserve_id AND
+	R.facility_id = F.facility_id AND
+	f.facility_id = '&v_searchFac'
+ORDER BY F.facility_id,C.reason;
+
+------------------------------------CLEAR FORMAT-----------------------------------------
+CLEAR COLUMNS
+CLEAR BREAKS
+CLEAR COMPUTES
+TTITLE OFF
+
+---------------------------------------------END-----------------------------------------

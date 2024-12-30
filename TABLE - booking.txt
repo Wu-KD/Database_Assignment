@@ -1,0 +1,16 @@
+CREATE TABLE booking(
+	booking_id		VARCHAR(6) 	NOT NULL,
+	customer_id		VARCHAR(4) 	NOT NULL,
+	schedule_id		VARCHAR(6) 	NOT NULL,
+	booking_date	DATE 		NOT NULL,
+	reserve_id		VARCHAR(4),
+	suite_no		VARCHAR(4)	NOT NULL,
+	num_adult		NUMBER(2)	DEFAULT 0,
+	num_child		NUMBER(2)	DEFAULT 0,
+	deposit		NUMBER(6,2)	DEFAULT 0.00,
+	PRIMARY KEY(booking_id)
+	--FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+	--FOREIGN KEY(schedule_id) REFERENCES route_schedule(schedule_id),
+	--FOREIGN KEY(reserve_id) REFERENCES reservation(reserve_id),
+	--FOREIGN KEY(suite_no) REFERENCES suite(suite_no)
+);

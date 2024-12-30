@@ -1,0 +1,39 @@
+--2020 OFFERS
+INSERT INTO offers VALUES ('NY2020', 'New Year offer 15%', 'Payment amount more than $4000.00', '01-JAN-2020', '15-JAN-2020', 0.15);
+INSERT INTO offers VALUES ('CN2020', 'Chinese New Year promotion 20%', 'Mininum three adults', '20-JAN-2020', '10-FEB-2020', 0.20);
+INSERT INTO offers VALUES ('VL2020', 'Valentine Month discount 15%', 'Two adults only', '01-FEB-2020', '29-FEB-2020', 0.15);
+INSERT INTO offers VALUES ('WM2020', 'International Women offer 20%','Payment amount more than $4000.00', '01-MAR-2020', '31-MAR-2020', 0.20);
+INSERT INTO offers VALUES ('HR2020', 'Hari Raya promotion 20%', 'Minimum two adults', '01-May-2020', '31-May-2020', 0.20);
+INSERT INTO offers VALUES ('FA2020', 'Father day promotion 15%', 'Payment amount more than $4000.00', '10-JUN-2020', '25-JUN-2020', 0.15);
+INSERT INTO offers VALUES ('ND2020', 'National Month offer 30%', 'Minimum one adult', '01-AUG-2020', '31-AUG-2020', 0.30);
+INSERT INTO offers VALUES ('MC2020', 'Christmas Sale discount 20%', 'Payment amount more than $4000.00', '10-DEC-2020', '31-DEC-2020', 0.20);
+
+--2021 OFFERS
+INSERT INTO offers VALUES ('NY2021', 'New Year offer 10%', 'Payment amount more than $4000.00', '15-JAN-2020', '28-FEB-2020', 0.10);
+INSERT INTO offers VALUES ('SG2021', 'individual trip offer 20%', 'Only one adult', '01-JAN-2021', '30-JUN-2021', 0.20);
+INSERT INTO offers VALUES ('HR2021', 'Hari Raya offers 15%', 'minimum four adults', '01-MAY-2021', '31-MAY-2021', 0.15);
+INSERT INTO offers VALUES ('MO2021', 'Mother day offer 15%', 'Payment amount more than $4000.00', '10-April-2021', '31-MAY-2021', 0.15);
+INSERT INTO offers VALUES ('ND2021', 'National Month discount 25%', 'Minimum two adult', '01-AUG-2021', '31-AUG-2021', 0.25);
+INSERT INTO offers VALUES ('MC2021', 'Merry Christmas promotion', 'Payment amount more than $4000.00', '01-DEC-2021', '31-DEC-2021', 0.15);
+
+--2022 OFFERS
+INSERT INTO offers VALUES ('SG2022', 'Discount 40% to single passenger', 'Available to one adult only', '01-JAN-2022', '30-JUN-2022', 0.40);
+INSERT INTO offers VALUES ('IW2022', 'International Women Day', 'Minimum 3 adults And $3000.00', '01-MAR-2022', '31-MAR-2022', 0.40);
+INSERT INTO offers VALUES ('ST2022', 'Special offer 30%', 'Payment amount more than $5000.00', '01-JUL-2022', '30-OCT-2022', 0.30);
+INSERT INTO offers VALUES ('DW2022', 'Deepawali Promotions', 'Payment amount more than $3000.00', '01-OCT-2022', '30-OCT-2022', 0.20);
+INSERT INTO offers VALUES ('HM2022', 'Honeymoon Trip offers', 'Two adults only', '01-NOV-2022', '31-DEC-2022', 0.25);
+INSERT INTO offers VALUES ('MC2022', 'Merry Christmas offers', 'Payment amount more than $3000.00', '01-DEC-2022', '31-DEC-2022', 0.10);
+
+
+
+--2023 OFFERS
+INSERT INTO offers VALUES ('CN2023', 'Chinese New Year Sales', 'Mininum 3 adults', '1-JAN-2023', '31-JAN-2023', 0.20);
+INSERT INTO offers VALUES ('SE2023', 'Special promtion 3 months', 'Minimum $3000.00 And 3 adults', '1-FEB-2023', '30-APR-2023', 0.30);
+INSERT INTO offers VALUES ('MP2023', 'Multi Passenger Trip Discount', 'Minimum 6 adults', '1-JAN-2023', '31-DEC-2023', 0.40);
+INSERT INTO offers VALUES ('VL2023', 'Valentine promotion', 'Two pax adults only', '1-FEB-2023', '28-FEB-2023', 0.25);
+INSERT INTO offers VALUES ('MO2023', 'MOTHER month', 'Payment amount more than $3000.00', '1-MAY-2023', '30-JUN-2023', 0.25);
+INSERT INTO offers VALUES ('SG2023', 'single passenger', 'Only one adult', '1-JUN-2023', '31-DEC-2023', 0.50);
+INSERT INTO offers VALUES ('HR2023', 'Hari Raya', 'minimum 2 pax', '1-JUL-2023', '31-JUL-2023', 0.20);
+INSERT INTO offers VALUES ('MS2023', 'National Month', 'Payment amount more than $3000.00', '1-AUG-2023', '30-SEP-2023', 0.40);
+INSERT INTO offers VALUES ('DW2023', 'Deepawali Sales', 'minimum 3 pax', '1-NOV-2023', '30-NOV-2023', 0.20);
+INSERT INTO offers VALUES ('MC2023', 'Christmas Sales','Payment amount more than $3000.00', '1-DEC-2023', '31-DEC-2023', 0.25);

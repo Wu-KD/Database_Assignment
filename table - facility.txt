@@ -1,0 +1,8 @@
+CREATE TABLE facility
+(facility_id  VARCHAR(4) NOT NULL,
+ description  VARCHAR(40) NOT NULL,
+ max_capacity NUMBER(2) NOT NULL,
+ location     VARCHAR(5) NOT NULL,
+ PRIMARY KEY(facility_id)
+);
+

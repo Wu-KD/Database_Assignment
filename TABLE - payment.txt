@@ -1,0 +1,12 @@
+CREATE TABLE payment(
+	payment_id		VARCHAR(6)	NOT NULL,
+	booking_id		VARCHAR(6)	NOT NULL,
+	payment_date	DATE,
+	payment_amount	NUMBER(7,2) DEFAULT 0.00,
+	sst			NUMBER(7,2),
+	service_charge	NUMBER(7,2),
+	offer_code		VARCHAR(6),
+	PRIMARY KEY(payment_id),
+	FOREIGN KEY(booking_id) REFERENCES booking(booking_id),
+	FOREIGN KEY(offer_code) REFERENCES offers(offer_code)
+);

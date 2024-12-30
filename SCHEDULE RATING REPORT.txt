@@ -1,0 +1,59 @@
+---------------------------------FORMAT DISPLAY------------------------------------------
+cl scr
+set linesize 120
+set pagesize 30
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY';
+
+-----------------------------------------USER INPUT--------------------------------------
+PROMPT '|||||||||||||||||||||||||||||||||||||||||||||||||'
+PROMPT '|                                               |'
+PROMPT '|  SEARCH RATING OF ROUTE_SCHEDULE BY THE YEAR  |'
+PROMPT '|                                               |'
+PROMPT '|||||||||||||||||||||||||||||||||||||||||||||||||'
+PROMPT
+PROMPT
+
+ACCEPT v_searchDate NUMBER FORMAT 9999 PROMPT 'Enter year(2020-2023): '	
+
+-----------------------------------FORMAT COLUMN-----------------------------------------
+COLUMN schedule_id FORMAT A11
+COLUMN depature_port FORMAT A33
+COLUMN destination FORMAT A33 
+COLUMN schedule_date FORMAT A13 
+COLUMN Rating FORMAT 0.99
+COLUMN 'Rating Rank' FORMAT A13
+
+---------------------------------------SET TITLE-----------------------------------------
+TTITLE CENTER 'ROUTE_SCHEDULE RATING REPORT FOR YEAR ' &v_searchDate SKIP 1-
+RIGHT 'Page:' FORMAT 999 SQL.PNO SKIP 2
+
+------------------------COMPUTE AVERAGE RATING FOR ROUTE---------------------------------
+BREAK on route_id on depature_port on destination skip 2
+COMPUTE AVG LABEL 'AVERAGE RATE'-
+	  OF RATING ON destination
+
+------------------AVERAGE RATING OF SCHEDULE ROUTE QUERY---------------------------------
+
+SELECT RS.route_id,R.depature_port,R.destination,B.schedule_id,RS.schedule_date,AVG(rating) as Rating,
+	 CASE
+	 	WHEN AVG(rating) > 7.00 THEN 'High'
+	 	WHEN AVG(rating) > 4.00 THEN 'Moderate'
+		ELSE 'Low'
+	END AS "Rating Rank"
+FROM passenger P,Passenger_booking PB,booking B,route_schedule RS,route R
+WHERE
+	P.passenger_id = PB.passenger_id AND
+	PB.booking_id = B.booking_id AND
+	B.schedule_id = RS.schedule_id AND
+	RS.route_id = R.route_id AND
+	EXTRACT(YEAR FROM schedule_date) = &v_searchDate
+GROUP BY RS.route_id,B.schedule_id,RS.ship_id,R.depature_port,R.destination,RS.schedule_date
+ORDER BY RS.route_id;
+
+------------------------------------CLEAR FORMAT-----------------------------------------
+CLEAR COLUMNS
+CLEAR BREAKS
+CLEAR COMPUTES
+TTITLE OFF
+
+---------------------------------------------END-----------------------------------------

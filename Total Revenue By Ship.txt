@@ -1,0 +1,38 @@
+-- Query 1: List the total revenue earned by each ship for the selected timeframe
+
+SET linesize 200
+SET pagesize 50
+
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-RRRR';
+
+ACCEPT Start_Date CHAR FORMAT 'A11' PROMPT 'Enter start date (DD-MON-YYYY): '
+ACCEPT End_Date CHAR FORMAT 'A11' PROMPT 'Enter end date (DD-MON-YYYY): '
+
+COLUMN Ship_Name FORMAT A60
+COLUMN Total_Revenue FORMAT $999,999.99
+
+TTITLE CENTER 'Total Revenue by Ship FROM ' Start_Date ' to ' End_Date SKIP 2 -
+	 LEFT '&Start_Date - &End_Date' SKIP 1 -
+	 LINE '-' -
+	 RIGHT 'Page No: ' FORMAT 999 SQL.PNO SKIP 2 
+
+BREAK ON Ship_Name skip
+COMPUTE SUM  LABEL 'Total : '-
+	  OF Total_Revenue ON Total_Revenue
+
+SELECT 
+	 s.Name AS Ship_Name, 
+       SUM(p.Payment_Amount) AS Total_Revenue
+FROM Ship s, Suite su, Booking b, Payment p
+WHERE su.Ship_ID = s.Ship_ID 
+  	AND b.Suite_ID = su.Suite_ID 
+  	AND p.Booking_ID = b.Booking_ID
+  	AND p.Payment_Date BETWEEN '&Start_Date' AND '&End_Date'
+GROUP BY s.Name
+ORDER BY Total_Revenue DESC;
+
+
+CLEAR COLUMNS
+CLEAR BREAKS
+CLEAR COMPUTES
+TTITLE OFF

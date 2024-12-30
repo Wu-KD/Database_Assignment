@@ -1,0 +1,9 @@
+CREATE TABLE offers(
+	offer_code	VARCHAR(6) not null,
+	description VARCHAR(40),
+	condition	VARCHAR(40),
+	start_date	DATE,
+	end_date	DATE,
+	discount	NUMBER(3,2),
+	PRIMARY KEY(offer_code)
+);

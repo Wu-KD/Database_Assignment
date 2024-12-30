@@ -1,0 +1,9 @@
+CREATE TABLE customer
+(customer_id VARCHAR(4) NOT NULL,
+ first_name  VARCHAR(10) NOT NULL,
+ last_name   VARCHAR(10),
+ tel_no      VARCHAR(11) CHECK (LENGTH(tel_no) = 10) NOT NULL,
+ email       VARCHAR(40) CHECK (email LIKE '%@%.%'),
+ PRIMARY KEY(customer_id)
+);
+
